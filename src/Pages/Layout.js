@@ -4,8 +4,10 @@ import NavigationBar from '../Components/Navigationbar';
 
 import Home from './Home';
 import StatusTool from './StatusTool';
+import JobsTool from './Jobs';
 
 export default class Layout extends Component{
+  
   render() {
     return (
       <Router>
@@ -13,6 +15,7 @@ export default class Layout extends Component{
         <Switch>
           <Route path='/home' component={Home}/>
           <Route path='/statustool' component={StatusTool}/>
+          <Route path='/jobs' component={JobsTool}/>
         </Switch>
       </Router>
     );

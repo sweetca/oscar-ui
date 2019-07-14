@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import { Row, Col, Input } from 'antd';
 
 import styles from '../Styles/StatusTool/JsonField.module.css';
-import data from '../TestData/data.json';
 
 const { TextArea } = Input;
 
 export default class JsonField extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      dummydata: data
-    };
-  }
   
   render() {
-    const data = this.state;
+    const { data } = this.props.data;
     return (
       <Row className={styles.JsonFieldWrapper} type="flex" justify="space-around" align="top">
         <Col span={24}>
