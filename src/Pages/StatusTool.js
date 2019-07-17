@@ -28,8 +28,6 @@ export default class StatusTool extends Component {
 
   render() {
     const { isLoaded, data } = this.state;
-    console.log(data)
-    console.log(isLoaded);
     return (
       <Row className={styles.mainwrapper}>
         <Col xs={24} sm={24} md={24} lg={24} xl={12}>

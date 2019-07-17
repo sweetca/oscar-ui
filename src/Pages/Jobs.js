@@ -29,7 +29,6 @@ export default class StatusTool extends Component {
   }
   
   render() {
-    console.log(this.state.jobs)
     return (
       <Row className={styles.mainwrapper}>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
