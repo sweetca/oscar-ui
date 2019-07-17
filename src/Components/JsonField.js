@@ -8,7 +8,8 @@ const { TextArea } = Input;
 export default class JsonField extends Component {
   
   render() {
-    const { data } = this.props.data;
+    const { data } = this.props;
+    console.log(data)
     return (
       <Row className={styles.JsonFieldWrapper} type="flex" justify="space-around" align="top">
         <Col span={24}>

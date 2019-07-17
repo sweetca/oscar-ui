@@ -21,13 +21,15 @@ export default class StatusTool extends Component {
     .then(result => {
       this.setState({
         isLoaded: true,
-        data: result,
+        data: result.data,
       });
     })
   }
 
   render() {
     const { isLoaded, data } = this.state;
+    console.log(data)
+    console.log(isLoaded);
     return (
       <Row className={styles.mainwrapper}>
         <Col xs={24} sm={24} md={24} lg={24} xl={12}>
@@ -36,12 +38,12 @@ export default class StatusTool extends Component {
           />
         </Col>
         <Col  xs={24} sm={24} md={24} lg={24} xl={12}>
-          {!isLoaded ? 
+          {isLoaded ? 
             <JsonField
             data={data}
           /> : 
             <Col span={24}>
-              Loading data...
+              Ready to receive data...
             </Col>
           }
         </Col>

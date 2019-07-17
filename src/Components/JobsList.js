@@ -32,13 +32,13 @@ const columns = [
 
 export default class StatusTool extends Component {
   render() {
-    const { loading, jobs } = this.props;
+    const { loading, data } = this.props;
     return (
       <Row>
         <Col span={24}>
           <Table
             columns={columns}
-            dataSource={jobs}
+            dataSource={data}
             bordered
             loading={loading}
             title={() => 'All Jobs that are currently running'}

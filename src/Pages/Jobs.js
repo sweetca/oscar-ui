@@ -10,29 +10,32 @@ export default class StatusTool extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoaded: false,
+      isLoaded: true,
       jobs: [],
     };
   }
 
   componentDidMount() {
+    var jobsss = this;
     axios.get('http://cs360.codescoop.com:8081/component')
-    .then(response => {
+    .then((response) => {
       this.setState({
-        isLoaded: true,
-        jobs: response,
-      })
-    })
+        isLoaded: false,
+        jobs: response.data,
+      });
+    }).catch((error) => {
+      console.error(error);
+  });
   }
   
   render() {
-    const { isLoaded, jobs } = this.state;
+    console.log(this.state.jobs)
     return (
       <Row className={styles.mainwrapper}>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <JobsList 
-            data={jobs}
-            loading={isLoaded}
+            data={this.state.jobs}
+            loading={this.state.isLoaded}
           />
         </Col>
       </Row>
