@@ -44,7 +44,7 @@ export default class NavigationBar extends Component {
             <span className="barsBtn"></span>
           </Button>
           <Drawer
-            title="Basic Drawer"
+            title="Navigation"
             placement="right"
             closable={false}
             onClose={this.onClose}

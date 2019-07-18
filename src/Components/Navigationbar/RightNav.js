@@ -6,10 +6,10 @@ export default class RightNav extends Component {
     return (
 		  <Menu mode="horizontal">
         <Menu.Item key="mail">
-          <a href="">Signin</a>
+          <a href="/home">Signin</a>
         </Menu.Item>
         <Menu.Item key="app">
-          <a href="">Signup</a>
+          <a href="/home">Signup</a>
         </Menu.Item>
       </Menu>
     );

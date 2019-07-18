@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 
+const { SubMenu } = Menu;
+
 export default class LeftNav extends Component {
   render() {
     return (
@@ -16,26 +18,47 @@ export default class LeftNav extends Component {
             Home
           </Link>
         </Menu.Item>
-        <Menu.Item key="jobs">
-          <Link to='/jobs'>
+        <Menu.Item key="tasks">
+          <Link to='/tasks'>
             <Icon 
               type="tool"
               theme="twoTone"
               twoToneColor="#black"
             />
-            Jobs
+            All Tasks
           </Link>
         </Menu.Item>
-        <Menu.Item key="statustool">
-          <Link to='/statustool'>
-            <Icon 
-              type="tool"
-              theme="twoTone"
-              twoToneColor="#black"
-            />
-            Job status tool
-          </Link>
-        </Menu.Item>
+        <SubMenu
+          title={
+            <span>
+              <Icon type="setting" />
+              Tools
+            </span>
+          }
+        >
+          <Menu.ItemGroup title="Tools">
+            <Menu.Item key="statustool">
+            <Link to='/statustool'>
+              <Icon 
+                type="tool"
+                theme="twoTone"
+                twoToneColor="#black"
+              />
+              Task status
+            </Link>
+            </Menu.Item>
+            <Menu.Item key="newtask">
+            <Link to='/newtask'>
+              <Icon 
+                type="tool"
+                theme="twoTone"
+                twoToneColor="#black"
+              />
+              Create new task
+            </Link>
+            </Menu.Item>
+          </Menu.ItemGroup>
+        </SubMenu>
       </Menu>
     );
   }

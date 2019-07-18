@@ -5,6 +5,7 @@ import NavigationBar from '../Components/Navigationbar';
 import Home from './Home';
 import StatusTool from './StatusTool';
 import JobsTool from './Jobs';
+import NewTask from './NewTask';
 
 export default class Layout extends Component{
   
@@ -13,9 +14,10 @@ export default class Layout extends Component{
       <Router>
         <NavigationBar />
         <Switch>
-          <Route path='/home' component={Home}/>
-          <Route path='/statustool' component={StatusTool}/>
-          <Route path='/jobs' component={JobsTool}/>
+          <Route path='/home' component={Home} />
+          <Route path='/tasks' component={JobsTool} />
+          <Route path='/statustool' component={StatusTool} />
+          <Route path='/newtask' component={NewTask} />
         </Switch>
       </Router>
     );

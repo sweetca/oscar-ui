@@ -16,7 +16,6 @@ export default class StatusTool extends Component {
   }
 
   componentDidMount() {
-    var jobsss = this;
     axios.get('http://cs360.codescoop.com:8081/component')
     .then((response) => {
       this.setState({
