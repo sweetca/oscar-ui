@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
 import { Row, Col, Table } from 'antd';
+import { Link } from 'react-router-dom';
 
 const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: text => <p>{text}</p>,
+    width: '20%',
+    render: (text, record) =>
+    <Link to={{
+      pathname: `/component/${record.id}/${record.version}`,
+      state: { 
+        data: record,
+      }
+    }}>
+      {text}
+    </Link>
   },
   {
     title: 'Owner',
     dataIndex: 'owner',
     key: 'owner',
+    width: '20%',
   },
   {
     title: 'Url',
     dataIndex: 'url',
     key: 'url',
+    width: '50%',
   },
   {
     title: 'Private Access',
     dataIndex: 'privateAccess',
     key: 'access',
-  },
-  {
-    title: 'Id',
-    dataIndex: 'id',
-    key: 'id',
+    width: '10%',
+    render: val => val === false ? <span>False</span> : <span>True</span>
   },
 ];
 
-export default class StatusTool extends Component {
+export default class TasksList extends Component {
   render() {
     const { loading, data } = this.props;
     return (
@@ -41,7 +50,7 @@ export default class StatusTool extends Component {
             dataSource={data}
             bordered
             loading={loading}
-            title={() => 'All Jobs that are currently running'}
+            title={() => 'All tasks that are currently running'}
           />
         </Col>
       </Row>

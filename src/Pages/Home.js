@@ -4,7 +4,7 @@ import { Row, Col } from 'antd';
 import Logo from '../Assets/logo.png'
 import styles from '../Styles/Home/main.module.css';
 
-export default class Page1 extends Component {  
+export default class Home extends Component {  
   render() {
     return (
       <Row className={styles.mainWrapper} type="flex" justify="space-around" align="middle">

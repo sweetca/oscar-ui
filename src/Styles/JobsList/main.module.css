@@ -10,3 +10,16 @@
   text-align: center;
   overflow: auto;
 }
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  padding: 16px 16px;
+  word-break: break-word;
+  -ms-word-break: break-all;
+  }
+
+@media (min-width: 768px) {
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+padding: 16px 16px;
+}
+}

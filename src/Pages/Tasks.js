@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import axios from 'axios';
 
-import JobsList from '../Components/JobsList';
+import TasksList from '../Components/TasksList';
 
 import styles from '../Styles/JobsList/main.module.css';
 
-export default class StatusTool extends Component {
+export default class Tasks extends Component {
   constructor(props){
     super(props);
     this.state = {
       isLoaded: true,
-      jobs: [],
+      tasks: [],
     };
   }
 
@@ -20,7 +20,7 @@ export default class StatusTool extends Component {
     .then((response) => {
       this.setState({
         isLoaded: false,
-        jobs: response.data,
+        tasks: response.data,
       });
     }).catch((error) => {
       console.error(error);
@@ -28,12 +28,13 @@ export default class StatusTool extends Component {
   }
   
   render() {
+    const { isLoaded, tasks } = this.state
     return (
       <Row className={styles.mainwrapper}>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <JobsList 
-            data={this.state.jobs}
-            loading={this.state.isLoaded}
+          <TasksList 
+            data={tasks}
+            loading={isLoaded}
           />
         </Col>
       </Row>

@@ -29,7 +29,7 @@ export default class UrlForm extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Item> 
             <Input 
-              placeholder="Input id of job"
+              placeholder="Input id of task"
               value={this.state.value}
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}>

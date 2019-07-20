@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Input } from 'antd';
 import axios from 'axios';
 
 import UrlForm from '../Components/UrlForm';
 import JsonField from '../Components/JsonField'
 
 import styles from '../Styles/StatusTool/main.module.css';
+
+const { TextArea } = Input;
 
 export default class StatusTool extends Component {
   constructor(props){
@@ -16,7 +18,7 @@ export default class StatusTool extends Component {
     };
   }
 
-  getJobData = (id) => {
+  getTaskData = (id) => {
     axios.get(`http://cs360.codescoop.com:8081/task/${id}`)
     .then(result => {
       this.setState({
@@ -32,16 +34,21 @@ export default class StatusTool extends Component {
       <Row className={styles.mainwrapper}>
         <Col xs={24} sm={24} md={24} lg={24} xl={12}>
           <UrlForm
-            getData={this.getJobData}
+            getData={this.getTaskData}
           />
         </Col>
         <Col  xs={24} sm={24} md={24} lg={24} xl={12}>
           {isLoaded ? 
             <JsonField
             data={data}
+            size={{minRows: 40, maxRows: 40 }}
           /> : 
             <Col span={24}>
-              Ready to receive data...
+              <TextArea
+                autosize={{ minRows: 40, maxRows: 40 }}
+                value="JSON data will appear here"
+                disabled={true}
+              />
             </Col>
           }
         </Col>
