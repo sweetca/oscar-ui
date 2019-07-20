@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Collapse, Form, Select, Button, Input, Checkbox, Row, Col, Radio, message } from 'antd';
 import axios from 'axios';
-import { Collapse, Form, Select, Button, Input, Checkbox, Row, Col } from 'antd';
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -10,7 +10,27 @@ class CreateNewTaskForm extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        const typesForm = [values.gitClone, values.fossyScan, values.ort, values.vulnerability];
+        const typesFinal = typesForm.filter(Boolean);
+        axios.post('http://cs360.codescoop.com:8081/task', {
+          component: {
+            type: values.type,
+            owner: values.owner,
+            name: values.name,
+            url: values.url,
+            privateAccess: values.isPrivate,
+            branch: values.branch,
+            credentials: {
+                accessToken: values.accesstoken,
+                userName: values.username
+            }
+        },
+        types: typesFinal,
+        })
+        .catch(function (error) {
+          message.error(`Server responded with ${error}`, 10.0);
+ 
+        });
       }
     });
   };
@@ -104,7 +124,7 @@ class CreateNewTaskForm extends Component {
             <Form.Item label="Git Clone:">
               {getFieldDecorator('gitClone', {
                 valuePropName: 'checked',
-                initialValue: true,
+                initialValue: 10,
               })(
                 <Checkbox />
               )}
@@ -112,23 +132,25 @@ class CreateNewTaskForm extends Component {
             <Form.Item label="Fossylogy scan:">
               {getFieldDecorator('fossyScan', {
                 valuePropName: 'checked',
-                initialValue: true,
+                initialValue: 20,
               })(
                 <Checkbox />
               )}
             </Form.Item>
-            <Form.Item label="ORT:">
+            <Form.Item label="ORT scan style:">
               {getFieldDecorator('ort', {
-                valuePropName: 'checked',
-                initialValue: true,
+                initialValue:30 ,
               })(
-                <Checkbox />
-              )}
+                <Radio.Group> 
+                  <Radio value={30}>ORT analyze</Radio>
+                  <Radio value={31}>ORT scan</Radio>
+                </Radio.Group>,
+          )}
             </Form.Item>
             <Form.Item label="Vulnerability scan:">
               {getFieldDecorator('vulnerability', {
                 valuePropName: 'checked',
-                initialValue: true,
+                initialValue: 41,
               })(
                 <Checkbox />
               )}
@@ -147,4 +169,4 @@ class CreateNewTaskForm extends Component {
   }
 }
 
-export default Form.create({ name: 'normal_login' })(CreateNewTaskForm);
+export default Form.create({ name: 'CreateNewTaskForm' })(CreateNewTaskForm);

@@ -9,7 +9,9 @@ export default class NewTask extends Component {
     return (
       <Row className={styles.mainWrapper}>
         <Col span={24}>
-          <CreateNewTaskForm />
+          <CreateNewTaskForm 
+            handleSubmit={this.handleSubmit}
+          />
         </Col>
       </Row>
     );
