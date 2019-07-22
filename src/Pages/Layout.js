@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import NavigationBar from '../Components/Navigationbar';
 
 import Home from './Home';
-import StatusTool from './StatusTool';
-import TasksTool from './Tasks';
-import ComponentView from './TaskOverview';
+import Components from './Components';
+import Tasks from './Tasks'
+import Task from './TaskOverview';
+import ComponentView from './ComponentOverview';
 import NewTask from './NewTask';
 
 export default class Layout extends Component{
@@ -16,9 +17,10 @@ export default class Layout extends Component{
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route path='/home' component={Home} />
-          <Route path='/tasks' component={TasksTool} />
+          <Route path='/components' component={Components} />
           <Route path='/component' component={ComponentView} />
-          <Route path='/statustool' component={StatusTool} />
+          <Route path='/tasks' component={Tasks} />
+          <Route path='/task' component={Task} />
           <Route path='/newtask' component={NewTask} />
         </Switch>
       </Router>

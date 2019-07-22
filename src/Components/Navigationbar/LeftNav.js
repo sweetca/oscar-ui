@@ -7,7 +7,7 @@ const { SubMenu } = Menu;
 export default class LeftNav extends Component {
   render() {
     return (
-			<Menu mode="horizontal">
+			<Menu mode={this.props.menumode}>
       	<Menu.Item key="home">
           <Link to='/home'>
             <Icon 
@@ -18,16 +18,37 @@ export default class LeftNav extends Component {
             Home
           </Link>
         </Menu.Item>
-        <Menu.Item key="tasks">
-          <Link to='/tasks'>
-            <Icon 
-              type="tool"
-              theme="twoTone"
-              twoToneColor="#black"
-            />
-            All Tasks
-          </Link>
-        </Menu.Item>
+        <SubMenu
+          title={
+            <span>
+              <Icon type="setting" />
+              Overviews
+            </span>
+          }
+        >
+          <Menu.ItemGroup title="Overviews">
+            <Menu.Item key="components">
+              <Link to='/components'>
+              <Icon 
+                type="tool"
+                theme="twoTone"
+                twoToneColor="#black"
+              />
+              All components
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="tasks">
+              <Link to='/tasks'>
+                <Icon 
+                  type="tool"
+                  theme="twoTone"
+                  twoToneColor="#black"
+                />
+                All tasks
+              </Link>
+            </Menu.Item>
+          </Menu.ItemGroup>
+        </SubMenu>
         <SubMenu
           title={
             <span>

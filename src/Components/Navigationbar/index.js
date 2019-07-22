@@ -35,10 +35,14 @@ export default class NavigationBar extends Component {
         </div>
         <div className="menuContent">
           <div className="leftNav">
-            <LeftNav />
+            <LeftNav 
+              menumode='horizontal'
+            />
           </div>
           <div className="rightNav">
-              <RightNav />
+            <RightNav 
+              menumode='horizontal'
+            />
           </div>
           <Button className="barsMenu" type="default" onClick={this.showDrawer}>
             <span className="barsBtn"></span>
@@ -50,8 +54,12 @@ export default class NavigationBar extends Component {
             onClose={this.onClose}
             visible={this.state.visible}
           >
-            <LeftNav />
-            <RightNav />
+            <LeftNav 
+              menuMode='inline'
+            />
+            <RightNav 
+              menuMode='inline'
+            />
           </Drawer>
         </div>
       </nav>

@@ -4,7 +4,7 @@ import { Menu } from 'antd';
 export default class RightNav extends Component {
   render() {
     return (
-		  <Menu mode="horizontal">
+		  <Menu mode={this.props.menumode}>
         <Menu.Item key="mail">
           <a href="/home">Signin</a>
         </Menu.Item>

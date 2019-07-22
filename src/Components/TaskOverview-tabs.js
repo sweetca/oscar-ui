@@ -13,7 +13,10 @@ export default class TaskOverviewTabs extends Component {
       taskFossolyData,
       taskORTData,
       taskVulnerabilityData,
-      isLoading
+      taskFossologyLoading,
+      taskDataLoading,
+      taskORTLoading,
+      taskVulnerabilitiesLoading
     } = this.props;
     return (
       <Tabs defaultActiveKey="basicInformation">
@@ -26,17 +29,18 @@ export default class TaskOverviewTabs extends Component {
           }
           key="basicInformation"
         >
-          <Row>
-            <Col xs={2} sm={4} md={6} lg={8} xl={12}>
+          <Row gutter={16}>
+            <Col xs={24} sm={24} md={26} lg={24} xl={12}>
               <InformationCard
                 data={taskData}
-                isLoading={isLoading}
+                isLoading={taskDataLoading}
               />
             </Col>
-            <Col xs={2} sm={4} md={6} lg={8} xl={12}>
+            <Col xs={24} sm={24} md={26} lg={24} xl={12}>
               <JsonField 
                 size={{minRows: 37, maxRows: 37 }}
                 data={taskData}
+                isLoading={taskDataLoading}
               />
             </Col>
           </Row>
@@ -53,6 +57,7 @@ export default class TaskOverviewTabs extends Component {
           <JsonField 
             size={{minRows: 37, maxRows: 37 }}
             data={taskFossolyData}
+            isLoading={taskFossologyLoading}
           />
         </TabPane>
         <TabPane
@@ -67,6 +72,7 @@ export default class TaskOverviewTabs extends Component {
           <JsonField 
             size={{minRows: 37, maxRows: 37 }}
             data={taskORTData}
+            isLoading={taskORTLoading}
           />
         </TabPane>
         <TabPane
@@ -81,6 +87,7 @@ export default class TaskOverviewTabs extends Component {
           <JsonField 
             size={{minRows: 37, maxRows: 37 }}
             data={taskVulnerabilityData}
+            isLoading={taskVulnerabilitiesLoading}
           />
         </TabPane>
       </Tabs>

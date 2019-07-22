@@ -27,9 +27,12 @@ class CreateNewTaskForm extends Component {
         },
         types: typesFinal,
         })
+        .then(function () {
+          message.success('Task was created succesfully');
+          this.props.form.resetFields();
+        })
         .catch(function (error) {
-          message.error(`Server responded with ${error}`, 10.0);
- 
+          message.error(`Server responded with ${error}`, 5.0);
         });
       }
     });

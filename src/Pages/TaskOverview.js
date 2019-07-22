@@ -2,78 +2,44 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import axios from 'axios';
 
-import TaskTabs from '../Components/TaskOverview-tabs';
+import JsonField from '../Components/JsonField'
 
-import styles from '../Styles/TaskOverview/main.module.css'
+import styles from '../Styles/StatusTool/main.module.css';
 
-export default class StatusTool extends Component {
+export default class TaskOverView extends Component {
   constructor(props){
     super(props);
     this.state = {
       isLoading: true,
-      taskData: [],
-      taskFossology: [],
-      taskORT: [],
-      taskVulnerabilities: [],
+      data: [],
     };
   }
 
   componentDidMount() {
     const { id, version } = this.props.location.state.data;
     this.getTaskData(id, version);
-    this.getFossologyData(id, version);
-    this.getORTData(id, version);
-    this.getVulnerabilitiesData(id, version);
   }
 
-  getTaskData = (id, version) => {
-    axios.get(`http://cs360.codescoop.com:8081/component/${id}/${version}`)
-    .then(result => {
-      this.setState({
-        taskData: result.data,
-      });
-    })
-  }
-
-  getFossologyData = (id, version) => {
-    axios.get(`http://cs360.codescoop.com:8081/component/${id}/${version}/fossology`)
-    .then(result => {
-      this.setState({
-        taskFossology: result.data,
-      });
-    })
-  }
-
-  getORTData = (id, version) => {
-    axios.get(`http://cs360.codescoop.com:8081/component/${id}/${version}/ort`)
-    .then(result => {
-      this.setState({
-        taskORT: result.data,
-      });
-    })
-  }
-
-  getVulnerabilitiesData = (id, version) => {
-    axios.get(`http://cs360.codescoop.com:8081/component/${id}/${version}/vulnerabilities`)
+  getTaskData = (id) => {
+    axios.get(`http://cs360.codescoop.com:8081/task/${id}`)
     .then(result => {
       this.setState({
         isLoading: false,
-        taskVulnerabilities: result.data,
+        data: result.data,
       });
     })
   }
+
   render() {
-    const { taskData, taskFossology, taskORT, taskVulnerabilities, isLoading } = this.state
+    const { isLoading, data } = this.state;
     return (
-      <Row className={styles.mainWrapper}>
-        <Col span={24}>
-         <TaskTabs 
-          taskData={taskData}
-          taskFossolyData={taskFossology}
-          taskORTData={taskORT}
-          taskVulnerabilityData={taskVulnerabilities}
-          isLoading={isLoading}
-         />
+      <Row className={styles.mainwrapper} type="flex" justify="space-around" align="top">
+        <Col span={12}>
+          <JsonField
+            data={data}
+            size={{minRows: 42, maxRows: 42 }}
+            isLoading={isLoading}
+          />
         </Col>
       </Row>
     );
