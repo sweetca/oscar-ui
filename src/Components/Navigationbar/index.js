@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Drawer, Button } from 'antd';
+import { Drawer } from 'antd';
 
 import LeftNav from './LeftNav'
-import RightNav from './RightNav'
-
 import '../../Styles/NavigationBar/NavigationBar.css';
 
 export default class NavigationBar extends Component {
@@ -39,14 +37,9 @@ export default class NavigationBar extends Component {
               menumode='horizontal'
             />
           </div>
-          <div className="rightNav">
-            <RightNav 
-              menumode='horizontal'
-            />
-          </div>
-          <Button className="barsMenu" type="default" onClick={this.showDrawer}>
+          <button className="barsMenu" type="default" onClick={this.showDrawer}>
             <span className="barsBtn"></span>
-          </Button>
+          </button>
           <Drawer
             title="Navigation"
             placement="right"
@@ -55,9 +48,6 @@ export default class NavigationBar extends Component {
             visible={this.state.visible}
           >
             <LeftNav 
-              menuMode='inline'
-            />
-            <RightNav 
               menuMode='inline'
             />
           </Drawer>

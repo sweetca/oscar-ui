@@ -21,7 +21,11 @@ export default class LeftNav extends Component {
         <SubMenu
           title={
             <span>
-              <Icon type="setting" />
+              <Icon 
+                type="container"
+                theme="twoTone"
+                twoToneColor="#black"
+              />
               Overviews
             </span>
           }
@@ -30,9 +34,7 @@ export default class LeftNav extends Component {
             <Menu.Item key="components">
               <Link to='/components'>
               <Icon 
-                type="tool"
-                theme="twoTone"
-                twoToneColor="#black"
+                type="unordered-list"
               />
               All components
               </Link>
@@ -40,46 +42,29 @@ export default class LeftNav extends Component {
             <Menu.Item key="tasks">
               <Link to='/tasks'>
                 <Icon 
-                  type="tool"
-                  theme="twoTone"
-                  twoToneColor="#black"
+                  type="unordered-list"
                 />
                 All tasks
               </Link>
             </Menu.Item>
-          </Menu.ItemGroup>
-        </SubMenu>
-        <SubMenu
-          title={
-            <span>
-              <Icon type="setting" />
-              Tools
-            </span>
-          }
-        >
-          <Menu.ItemGroup title="Tools">
-            <Menu.Item key="statustool">
-            <Link to='/statustool'>
-              <Icon 
-                type="tool"
-                theme="twoTone"
-                twoToneColor="#black"
-              />
-              Task status
-            </Link>
-            </Menu.Item>
-            <Menu.Item key="newtask">
-            <Link to='/newtask'>
-              <Icon 
-                type="tool"
-                theme="twoTone"
-                twoToneColor="#black"
-              />
-              Create new task
-            </Link>
+            <Menu.Item key="running">
+              <Link to='/running'>
+                <Icon 
+                  type="unordered-list"
+                />
+                All running tasks
+              </Link>
             </Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
+          <Menu.Item key="newtask">
+          <Link to='/newtask'>
+            <Icon 
+              type="form"
+            />
+            Create new task
+          </Link>
+          </Menu.Item>
       </Menu>
     );
   }

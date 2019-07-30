@@ -83,7 +83,7 @@
   border-bottom-color: transparent;
 }
 
-@media(max-width: 767px){
+@media(max-width: 550px){
   .barsMenu{
     display: inline-block;
   }

@@ -8,12 +8,13 @@ import Tasks from './Tasks'
 import Task from './TaskOverview';
 import ComponentView from './ComponentOverview';
 import NewTask from './NewTask';
+import Running from './Running';
 
 export default class Layout extends Component{
   render() {
     return (
       <Router>
-        <NavigationBar />
+        <NavigationBar/>
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route path='/home' component={Home} />
@@ -22,6 +23,7 @@ export default class Layout extends Component{
           <Route path='/tasks' component={Tasks} />
           <Route path='/task' component={Task} />
           <Route path='/newtask' component={NewTask} />
+          <Route path='/running' component={Running} />
         </Switch>
       </Router>
     );

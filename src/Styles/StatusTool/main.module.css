@@ -10,3 +10,7 @@
   text-align: center;
   overflow: auto;
 }
+
+.information_container {
+  padding: 40px 12px;
+}

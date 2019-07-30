@@ -58,7 +58,7 @@ const columns = [
 
 export default class TasksList extends Component {
   render() {
-    const { loading, data } = this.props;
+    const { loading, data, title } = this.props;
     return (
       <Row>
         <Col span={24}>
@@ -68,7 +68,7 @@ export default class TasksList extends Component {
             dataSource={data}
             bordered
             loading={loading}
-            title={() => 'All Tasks'}
+            title={() => title}
           />
         </Col>
       </Row>

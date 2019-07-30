@@ -29,11 +29,11 @@ class CreateNewTaskForm extends Component {
         })
         .then(function () {
           message.success('Task was created succesfully');
-          this.props.form.resetFields();
         })
         .catch(function (error) {
-          message.error(`Server responded with ${error}`, 5.0);
+          console.log(error);
         });
+        this.props.form.resetFields();
       }
     });
   };

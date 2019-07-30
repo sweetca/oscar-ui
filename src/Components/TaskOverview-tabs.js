@@ -30,13 +30,13 @@ export default class TaskOverviewTabs extends Component {
           key="basicInformation"
         >
           <Row gutter={16}>
-            <Col xs={24} sm={24} md={26} lg={24} xl={12}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               <InformationCard
                 data={taskData}
                 isLoading={taskDataLoading}
               />
             </Col>
-            <Col xs={24} sm={24} md={26} lg={24} xl={12}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               <JsonField 
                 size={{minRows: 37, maxRows: 37 }}
                 data={taskData}
