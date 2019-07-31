@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import React, { PureComponent } from 'react';
 import axios from 'axios';
 
 import TasksList from '../Components/TasksList';
+import styles from '../Styles/ListViews/main.module.css';
 
-import styles from '../Styles/JobsList/main.module.css';
-
-export default class Running extends Component {
-  constructor(props){
+export default class Running extends PureComponent {
+  constructor(props) {
     super(props);
     this.state = {
       runningLoading: true,
@@ -17,28 +15,24 @@ export default class Running extends Component {
 
   componentDidMount() {
     axios.get('http://cs360.codescoop.com:8081/task/running')
-    .then((response) => {
-      this.setState({
-        runningLoading: false,
-        allRunningTasks: response.data,
+      .then((response) => {
+        this.setState({
+          runningLoading: false,
+          allRunningTasks: response.data,
+        });
       });
-    }).catch((error) => {
-      console.error(error);
-    });
   }
-  
+
   render() {
-    const { runningLoading, allRunningTasks } = this.state
+    const { runningLoading, allRunningTasks } = this.state;
     return (
-      <Row className={styles.mainwrapper}>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <TasksList 
-            title='All running tasks'
-            data={allRunningTasks}
-            loading={runningLoading}
-          />
-        </Col>
-      </Row>
+      <div className={styles.mainWrapper}>
+        <TasksList
+          title="All running tasks"
+          data={allRunningTasks}
+          loading={runningLoading}
+        />
+      </div>
     );
   }
 }

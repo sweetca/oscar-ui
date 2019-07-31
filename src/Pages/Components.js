@@ -1,43 +1,37 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import React, { PureComponent } from 'react';
 import axios from 'axios';
 
 import ComponentList from '../Components/ComponentList';
+import styles from '../Styles/ListViews/main.module.css';
 
-import styles from '../Styles/JobsList/main.module.css';
-
-export default class Components extends Component {
-  constructor(props){
+export default class Components extends PureComponent {
+  constructor(props) {
     super(props);
     this.state = {
-      isLoaded: true,
+      isLoading: true,
       components: [],
     };
   }
 
   componentDidMount() {
     axios.get('http://cs360.codescoop.com:8081/component')
-    .then((response) => {
-      this.setState({
-        isLoaded: false,
-        components: response.data,
+      .then((response) => {
+        this.setState({
+          isLoading: false,
+          components: response.data,
+        });
       });
-    }).catch((error) => {
-      console.error(error);
-  });
   }
-  
+
   render() {
-    const { isLoaded, components } = this.state
+    const { isLoading, components } = this.state;
     return (
-      <Row className={styles.mainwrapper}>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <ComponentList 
-            data={components}
-            loading={isLoaded}
-          />
-        </Col>
-      </Row>
+      <div className={styles.mainWrapper}>
+        <ComponentList
+          data={components}
+          loading={isLoading}
+        />
+      </div>
     );
   }
 }

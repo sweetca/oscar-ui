@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-import Logo from '../Assets/logo.png'
+import Logo from '../Assets/logo.png';
 import styles from '../Styles/Home/main.module.css';
 
-export default class Home extends Component {  
+export default class Home extends PureComponent {
   render() {
     return (
       <div className={styles.mainWrapper}>

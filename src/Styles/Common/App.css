@@ -1,17 +1,8 @@
-@import '~antd/dist/antd.css';
 html, body {
   height: 100%;
   font-family: 'Roboto';
 }
 
 .App-Wrapper {
-  padding: 0 10%;
   height: 100vh;
-}
-
-@media(max-width: 820px){
-  .App-Wrapper {
-    padding: 0;
-    height: 100vh;
-  }
 }

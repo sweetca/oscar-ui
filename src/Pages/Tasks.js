@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import React, { PureComponent } from 'react';
 import axios from 'axios';
 
 import TasksList from '../Components/TasksList';
+import styles from '../Styles/ListViews/main.module.css';
 
-import styles from '../Styles/JobsList/main.module.css';
-
-export default class Tasks extends Component {
-  constructor(props){
+export default class Tasks extends PureComponent {
+  constructor(props) {
     super(props);
     this.state = {
       latestLoading: true,
@@ -17,28 +15,24 @@ export default class Tasks extends Component {
 
   componentDidMount() {
     axios.get('http://cs360.codescoop.com:8081/task/latest')
-    .then((response) => {
-      this.setState({
-        latestLoading: false,
-        latestTasks: response.data,
+      .then((response) => {
+        this.setState({
+          latestLoading: false,
+          latestTasks: response.data,
+        });
       });
-    }).catch((error) => {
-      console.error(error);
-    });
   }
-  
+
   render() {
-    const { latestLoading, latestTasks } = this.state
+    const { latestLoading, latestTasks } = this.state;
     return (
-      <Row className={styles.mainwrapper}>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <TasksList
-            title='Latest 20 tasks'
-            data={latestTasks}
-            loading={latestLoading}
-          />
-        </Col>
-      </Row>
+      <div className={styles.mainWrapper}>
+        <TasksList
+          title="Latest 20 tasks"
+          data={latestTasks}
+          loading={latestLoading}
+        />
+      </div>
     );
   }
 }
