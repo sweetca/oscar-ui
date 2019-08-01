@@ -1,6 +1,6 @@
 .Navigation_Wrapper {
   width: 100%;
-  height: 75px;
+  height: 70px;
   background: #ffffff;
   box-shadow: 0px 3px 20px rgba(115, 112, 150, 0.2);
 }
@@ -18,19 +18,26 @@
 .NavigationBar_Logo_Container {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   height: 100%;
-  width: 15%;
+  width: 28%;
 }
 
 .NavigationBar_Logo_Container img {
-  height: 100%;
-  width: 100%;
+  height: 70px;
+  padding-right: 20px;
 }
 
 .NavigationBar_Logo_Container a {
-  height: 65%;
-  width: 32%;
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.NavigationBar_Logo_Container a:hover {
+  color: black; 
+  text-decoration: none;
 }
 
 .NavigationBar_MenuItems_Container {
@@ -39,7 +46,7 @@
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  width: 75%;
+  width: 72%;
 }
 
 .NavigationBar_MenuItems_Container ul {
@@ -61,7 +68,7 @@
   display: flex;
   color: black;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
 }
 .NavigationBar_MenuItems_Container a:hover {
   color: #ff6c00;
@@ -70,4 +77,31 @@
 
 .activeLink {
   color: #ff6c00 !important;
+}
+
+@media (max-width: 840px) {
+  .NavigationBar_MenuItems_Container {
+    width: 90%;
+  }
+  .NavigationBar_Logo_Container {
+    width: 10%; 
+  }
+
+  .NavigationBar_Logo_Container a {
+    display: none; 
+  }
+}
+
+@media (max-width: 679px) {
+  .NavigationBar_MenuItems_Container {
+    display: none;  
+  }
+  .NavigationBar_Logo_Container {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .NavigationBar_Logo_Container a {
+    display: none; 
+  }
 }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-import Logo from '../Assets/miniLogo.png';
+import Logo from '../Assets/logoSmall.png';
 import HomeIcon from '../Assets/home.png';
 import ComponentsIcon from '../Assets/components.png';
 import TasksIcon from '../Assets/file.png';
@@ -14,7 +14,7 @@ const menuItems = [
   { name: 'Components', url: '/components', img: ComponentsIcon },
   { name: 'Tasks', url: '/tasks', img: TasksIcon },
   { name: 'Running', url: '/running', img: RunningIcon },
-  { name: 'New Task', url: '/newtask', img: NewIcon },
+  { name: 'Create Task', url: '/newtask', img: NewIcon },
 ];
 
 export default class NavigationBar extends PureComponent {
@@ -23,14 +23,15 @@ export default class NavigationBar extends PureComponent {
       <header className={styles.Navigation_Wrapper}>
         <nav className={styles.NavigationBar}>
           <div className={styles.NavigationBar_Logo_Container}>
+            <img src={Logo} alt="Codescoop - cs360" />
             <Link to="/home">
-              <img src={Logo} alt="Codescoop - oscar" />
+              Oscar - cs360
             </Link>
           </div>
           <div className={styles.NavigationBar_MenuItems_Container}>
             <ul>
               {menuItems.map(menuItem => (
-                <li>
+                <li key={menuItem.name}>
                   <NavLink
                     to={menuItem.url}
                     activeClassName={styles.activeLink}
