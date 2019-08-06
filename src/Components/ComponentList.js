@@ -1,60 +1,67 @@
-import React, { Component } from 'react';
-import { Row, Col, Table } from 'antd';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    width: '20%',
-    render: (text, record) =>
-    <Link to={{
-      pathname: `/component/${record.id}/${record.version}`,
-      state: { 
-        data: record,
-      }
-    }}>
-      {text}
-    </Link>
-  },
-  {
-    title: 'Owner',
-    dataIndex: 'owner',
-    key: 'owner',
-    width: '20%',
-  },
-  {
-    title: 'Url',
-    dataIndex: 'url',
-    key: 'url',
-    width: '50%',
-  },
-  {
-    title: 'Private Access',
-    dataIndex: 'privateAccess',
-    key: 'access',
-    width: '10%',
-    render: val => val === false ? <span>False</span> : <span>True</span>
-  },
-];
+import Github from '../Assets/github.svg';
+import Gitlab from '../Assets/gitlab.svg';
+import True from '../Assets/true.png';
+import False from '../Assets/false.png';
+import styles from '../Styles/Common/Datalist.module.css';
 
-export default class ComponentList extends Component {
+export default class Datalist extends PureComponent {
   render() {
-    const { loading, data } = this.props;
+    const { data } = this.props;
     return (
-      <Row>
-        <Col span={24}>
-          <Table
-            rowKey="id" 
-            columns={columns}
-            dataSource={data}
-            bordered
-            loading={loading}
-            title={() => 'All components'}
-          />
-        </Col>
-      </Row>
+      <div className={styles.wrapper}>
+        <div className={styles.title_container}>
+          <h2>All components</h2>
+        </div>
+        {data.map(dataItem => (
+          <div key={dataItem.id} className={styles.container}>
+            <div className={styles.basic_information}>
+              <div className={styles.info_container}>
+                <span>Name:</span>
+                <span>{dataItem.name}</span>
+              </div>
+              <div className={styles.info_container}>
+                <span>Owner:</span>
+                <span>{dataItem.owner}</span>
+              </div>
+              <div className={styles.info_container}>
+                <span>Type:</span>
+                <span>{dataItem.type === 'github' ? <img src={Github} alt="" /> : <img src={Gitlab} alt="" />}</span>
+              </div>
+              <div className={styles.info_container}>
+                <span>URL:</span>
+                <a href={dataItem.url}>{dataItem.url}</a>
+              </div>
+            </div>
+            <div className={styles.secondary_information}>
+              <div className={styles.info_container}>
+                <span>Creation date:</span>
+                <span>{moment.utc(dataItem.date).format('DD/MM/YYYY')}</span>
+              </div>
+              <div className={styles.info_container}>
+                <span>Private access:</span>
+                <span>{dataItem.privateAccess ? <img src={True} alt="" /> : <img src={False} alt="" />}</span>
+              </div>
+            </div>
+            <div className={styles.actions_container}>
+              <Link to={{
+                pathname: `/component/${dataItem.id}/${dataItem.version}`,
+                state: {
+                  data: { ...dataItem.id, ...dataItem.version },
+                },
+              }}
+              >
+                <button type="button">
+                  View component
+                </button>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
     );
   }
 }

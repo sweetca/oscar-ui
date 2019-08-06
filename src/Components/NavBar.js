@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import Logo from '../Assets/logoSmall.png';
 import HomeIcon from '../Assets/home.png';
 import ComponentsIcon from '../Assets/components.png';
 import TasksIcon from '../Assets/file.png';
@@ -23,10 +22,11 @@ export default class NavigationBar extends PureComponent {
       <header className={styles.Navigation_Wrapper}>
         <nav className={styles.NavigationBar}>
           <div className={styles.NavigationBar_Logo_Container}>
-            <img src={Logo} alt="Codescoop - cs360" />
-            <Link to="/home">
-              Oscar - cs360
-            </Link>
+            <a href="https://codescoop.com/">
+              <span className={styles.letterC}>C</span>
+              <span className={styles.dot} />
+              <span className={styles.dot} />
+            </a>
           </div>
           <div className={styles.NavigationBar_MenuItems_Container}>
             <ul>
