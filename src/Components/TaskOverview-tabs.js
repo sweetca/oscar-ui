@@ -3,6 +3,7 @@ import { Row, Col, Tabs, Icon } from 'antd';
 
 import JsonField from './JsonField';
 import InformationCard from './TaskOverviewDataCard';
+import HtmlReport from './HtmlReport';
 
 const { TabPane } = Tabs;
 
@@ -16,7 +17,9 @@ export default class TaskOverviewTabs extends Component {
       taskFossologyLoading,
       taskDataLoading,
       taskORTLoading,
-      taskVulnerabilitiesLoading
+      taskVulnerabilitiesLoading,
+      htmlReport,
+      reportLoading
     } = this.props;
     return (
       <Tabs defaultActiveKey="basicInformation">
@@ -88,6 +91,20 @@ export default class TaskOverviewTabs extends Component {
             size={{minRows: 37, maxRows: 37 }}
             data={taskVulnerabilityData}
             isLoading={taskVulnerabilitiesLoading}
+          />
+        </TabPane>
+        <TabPane
+          tab={
+            <span>
+              <Icon type="tool" theme="twoTone" />
+              Html Report
+            </span>
+          }
+          key="report"
+        >
+          <HtmlReport 
+            data={htmlReport}
+            isLoading={reportLoading}
           />
         </TabPane>
       </Tabs>
