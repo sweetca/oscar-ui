@@ -18,6 +18,10 @@ export default class ComponentOverview extends Component {
       taskFossology: [],
       taskORT: [],
       taskVulnerabilities: [],
+      htmlORTLoading: true,
+      htmlORTReport: [],
+      htmlFOSLoading: true,
+      htmlFOSReport: [],
     };
   }
 
@@ -27,6 +31,7 @@ export default class ComponentOverview extends Component {
     this.getFossologyData(id, version);
     this.getORTData(id, version);
     this.getVulnerabilitiesData(id, version);
+    this.getOrtReport(id, version);
   }
 
   getTaskData = (id, version) => {
@@ -80,6 +85,21 @@ export default class ComponentOverview extends Component {
     console.log(error);
   })
   }
+
+  getOrtReport = (id, version) => {
+    axios.get(`http://cs360.codescoop.com:8081/component/${id}/${version}/ort/html`)
+    .then(result => {
+      this.setState({
+        htmlLoading: false,
+        htmlReport: result.data,
+      });
+    })
+    .catch(function (error) {
+    console.log(error);
+  })
+  }
+
+
   render() {
     const {
       taskData,
@@ -89,8 +109,11 @@ export default class ComponentOverview extends Component {
       taskFossologyLoading,
       taskDataLoading,
       taskORTLoading,
-      taskVulnerabilitiesLoading
+      taskVulnerabilitiesLoading,
+      htmlReport,
+      htmlLoading
     } = this.state;
+    const { id, version } = this.props.location.state.data;
     return (
       <Row className={styles.mainWrapper}>
         <Col span={24}>
@@ -103,6 +126,10 @@ export default class ComponentOverview extends Component {
           taskDataLoading={taskDataLoading}
           taskORTLoading={taskORTLoading}
           taskVulnerabilitiesLoading={taskVulnerabilitiesLoading}
+          componentVersion={version}
+          componentID={id}
+          htmlReport={htmlReport}
+          htmlLoading={htmlLoading}
          />
         </Col>
       </Row>
