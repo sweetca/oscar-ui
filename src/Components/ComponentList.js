@@ -6,15 +6,20 @@ import Github from '../Assets/github.svg';
 import Gitlab from '../Assets/gitlab.svg';
 import True from '../Assets/true.png';
 import False from '../Assets/false.png';
-import styles from '../Styles/Common/Datalist.module.css';
+import styles from '../Styles/Datalist.module.css';
 
 export default class Datalist extends PureComponent {
+  
   render() {
-    const { data } = this.props;
+    const {
+      data,
+      title,
+    } = this.props;
+    console.log(data);
     return (
       <div className={styles.wrapper}>
         <div className={styles.title_container}>
-          <h2>All components</h2>
+          <h2>{title}</h2>
         </div>
         {data.map(dataItem => (
           <div key={dataItem.id} className={styles.container}>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
 import Logo from '../Assets/logo.png';
-import styles from '../Styles/Home/main.module.css';
+import styles from '../Styles/Home.module.css';
 
 export default class Home extends PureComponent {
   render() {
